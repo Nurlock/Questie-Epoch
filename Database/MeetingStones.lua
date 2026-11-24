@@ -43,71 +43,29 @@ function MeetingStones:GetLevelRangeByDungeonName(dungeonName)
             _MeetingStones.levelRangesByName[_NormalizeMeetingStoneName(tableEntry.name)] = tableEntry.range
         end
 
-        local aliases = {
-            ["The Blood Furnace"] = "Hellfire Citadel",
-            ["Hellfire Ramparts"] = "Hellfire Citadel",
-            ["The Shattered Halls"] = "Hellfire Citadel",
-            ["Blackrock Depths"] = "Blackrock Mountain",
-            ["Blackrock Spire"] = "Blackrock Mountain",
-            ["The Steamvault"] = "Coilfang Reservoir",
-            ["The Underbog"] = "Coilfang Reservoir",
-            ["The Slave Pens"] = "Coilfang Reservoir",
-            ["The Eye"] = "Tempest Keep",
-            ["The Mechanar"] = "Tempest Keep",
-            ["The Botanica"] = "Tempest Keep",
-            ["The Arcatraz"] = "Tempest Keep",
-            ["Mana-Tombs"] = "Auchindoun",
-            ["Auchenai Crypts"] = "Auchindoun",
-            ["Sethekk Halls"] = "Auchindoun",
-            ["Shadow Labyrinth"] = "Auchindoun",
-            ["Old Hillsbrad Foothills"] = "Caverns of Time",
-            ["The Black Morass"] = "Caverns of Time",
-            ["Hyjal Summit"] = "Caverns of Time",
-            ["Blackwing Lair"] = "Blackrock Mountain",
-            ["Molten Core"] = "Blackrock Mountain",
-            ["Serpentshrine Cavern"] = "Coilfang Reservoir",
-            ["Black Temple"] = "The Black Temple",
-            ["Temple of Ahn'Qiraj"] = "Ahn'Qiraj",
-            ["Ruins of Ahn'Qiraj"] = "Ahn'Qiraj",
-            ["The Eye of Eternity"] = "Wyrmrest Temple",
-            ["The Obsidian Sanctum"] = "Wyrmrest Temple",
-            ["The Ruby Sanctum"] = "Wyrmrest Temple",
-            ["Ahn'kahet: The Old Kingdom"] = "Azjol-Nerub",
-            ["The Oculus"] = "The Nexus",
-            ["Halls of Stone"] = "Ulduar",
-            ["Halls of Lightning"] = "Ulduar",
-            ["The Forge of Souls"] = "The Frozen Halls",
-            ["Pit of Saron"] = "The Frozen Halls",
-            ["Halls of Reflection"] = "The Frozen Halls",
+        local supplementalRanges = {
+            ["Zul'Gurub"] = "(60)",
+            ["Onyxia's Lair"] = "(60)",
+            ["Blackwing Lair"] = "(60)",
+            ["Molten Core"] = "(60)",
+            ["Ahn'Qiraj"] = "(60)",
+            ["Ruins of Ahn'Qiraj"] = "(60)",
+            ["Naxxramas"] = "(60)",
         }
 
-        local supplementalRanges = {
-            ["Onyxia's Lair"] = "(60)",
-            ["Zul'Gurub"] = "(60)",
-            ["Temple of Ahn'Qiraj"] = "(60)",
-            ["Ruins of Ahn'Qiraj"] = "(60)",
-            ["Molten Core"] = "(60)",
-            ["Blackwing Lair"] = "(60)",
-            ["Naxxramas"] = "(80)",
-            ["The Eye"] = "(70)",
-            ["Hyjal Summit"] = "(70)",
-            ["Serpentshrine Cavern"] = "(70)",
-            ["Ulduar"] = "(80)",
-            ["The Violet Hold"] = "(75-80)",
-            ["The Culling of Stratholme"] = "(75-80)",
-            ["Trial of the Champion"] = "(78-80)",
-            ["Trial of the Crusader"] = "(80)",
+        local aliases = {
+            ["Temple of Ahn'Qiraj"] = "Ahn'Qiraj",
         }
+
+        for instanceName, levelRange in pairs(supplementalRanges) do
+            _MeetingStones.levelRangesByName[_NormalizeMeetingStoneName(instanceName)] = levelRange
+        end
 
         for aliasName, sourceName in pairs(aliases) do
             local range = _MeetingStones.levelRangesByName[_NormalizeMeetingStoneName(sourceName)]
             if range then
                 _MeetingStones.levelRangesByName[_NormalizeMeetingStoneName(aliasName)] = range
             end
-        end
-
-        for instanceName, levelRange in pairs(supplementalRanges) do
-            _MeetingStones.levelRangesByName[_NormalizeMeetingStoneName(instanceName)] = levelRange
         end
     end
 
@@ -149,23 +107,23 @@ _MeetingStones.levelRanges = {
     },
     [178833] = {
         name = "Uldaman",
-        range = "(36-44)"
+        range = "(35-45)"
     },
     [178834] = {
         name = "The Deadmines",
-        range = "(16-24)"
+        range = "(15-23)"
     },
     [178844] = {
         name = "Scarlet Monastery",
-        range = "(28-44)"
+        range = "(30-44)"
     },
     [178845] = {
         name = "Shadowfang Keep",
-        range = "(17-25)"
+        range = "(18-26)"
     },
     [178884] = {
         name = "Wailing Caverns",
-        range = "(16-24)"
+        range = "(15-25)"
     },
     [179554] = {
         name = "The Temple of Atal'Hakkar",
@@ -173,130 +131,34 @@ _MeetingStones.levelRanges = {
     },
     [179555] = {
         name = "Gnomeregan",
-        range = "(24-32)"
+        range = "(24-34)"
+    },
+    [179584] = {
+        name = "Blackrock Depths",
+        range = "(48-60)"
     },
     [179585] = {
-        name = "Blackrock Mountain",
-        range = "(48-61)"
+        name = "Blackrock Spire",
+        range = "(53-61)"
     },
     [179595] = {
         name = "The Stockade",
-        range = "(21-29)"
+        range = "(22-30)"
     },
     [179596] = {
         name = "Ragefire Chasm",
-        range = "(14-20)"
+        range = "(13-18)"
     },
-    [182558] = {
-        name = "Coilfang Reservoir",
-        range = "(61-70)"
+    [250633] = {
+        name = "Baradin Hold",
+        range = "(60)"
     },
-    [182559] = {
-        name = "Tempest Keep",
-        range = "(69-70)"
+    [250634] = {
+        name = "Glittermurk Mines",
+        range = "(35-43)"
     },
-    [182560] = {
-        name = "Caverns of Time",
-        range = "(66-70)"
-    },
-    [184455] = {
-        name = "Hellfire Citadel",
-        range = "(58-70)"
-    },
-    [184456] = {
-        name = "Magtheridon's Lair",
-        range = "(70)"
-    },
-    [184458] = {
-        name = "Auchindoun",
-        range = "(63-70)"
-    },
-    [184462] = {
-        name = "Gruul's Lair",
-        range = "(70)"
-    },
-    [184463] = {
-        name = "Karazhan",
-        range = "(70)"
-    },
-    [185321] = {
-        name = "Onyxia's Lair",
-        range = "(60-70)"
-    },
-    [185322] = {
-        name = "Ahn'Qiraj",
-        range = "(60-70)"
-    },
-    [185433] = {
-        name = "Zul'Gurub",
-        range = "(60-70)"
-    },
-    [185550] = {
-        name = "The Black Temple",
-        range = "(70)"
-    },
-    [186251] = {
-        name = "Zul'Aman",
-        range = "(70)"
-    },
-    [188171] = {
-        name = "Magisters' Terrace",
-        range = "(70)"
-    },
-    [188172] = {
-        name = "Sunwell Plateau",
-        range = "(70)"
-    },
-    [188488] = {
-        name = "Utgarde Keep",
-        range = "(68-80)"
-    },
-    [191227] = {
-        name = "Azjol-Nerub",
-        range = "(70-80)"
-    },
-    [191529] = {
-        name = "Drak'Tharon Keep",
-        range = "(72-80)"
-    },
-    [192017] = {
-        name = "Ulduar",
-        range = "(75-80)"
-    },
-    [192399] = {
-        name = "Utgarde Pinnacle",
-        range = "(78-80)"
-    },
-    [192557] = {
-        name = "Gundrak",
-        range = "(74-80)"
-    },
-    [192622] = {
-        name = "Wyrmrest Temple",
-        range = "(80)"
-    },
-    [193166] = {
-        name = "Naxxramas",
-        range = "(77-80)"
-    },
-    [193602] = {
-        name = "The Nexus",
-        range = "(70-80)"
-    },
-    [195013] = {
-        name = "Vault of Archavon",
-        range = "(80)"
-    },
-    [195498] = {
-        name = "Argent Tournament",
-        range = "(80)"
-    },
-    [195695] = {
-        name = "Icecrown Citadel",
-        range = "(80)"
-    },
-    [202184] = {
-        name = "The Frozen Halls",
-        range = "(80)"
+    [250635] = {
+        name = "Uldum",
+        range = "(60)"
     },
 }
